@@ -1,5 +1,10 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { Inter } from 'next/font/google';
+import './globals.css';
+import Navbar from "@/Components/Navbar";
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: "MovGeek",
@@ -12,8 +17,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="bg-black text-white">
+    <html lang="en">
+      <body className={inter.className}>
+        <Navbar /> {/* 2. Place Navbar here, outside of children */}
         {children}
       </body>
     </html>

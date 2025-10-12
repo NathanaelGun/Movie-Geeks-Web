@@ -12,13 +12,13 @@ const Navbar = () => {
 
 
         <div className="flex gap-6">
-            <Link href="/" className='hover:text-gray-400'>
+            <Link href="/movies" className='hover:text-gray-400'>
                 Movies
             </Link>
-            <Link href="/" className='hover:text-gray-400'>
+            <Link href="/mylist" className='hover:text-gray-400'>
                 MyList
             </Link>
-            <Link href="/" className='hover:text-gray-400'>
+            <Link href="/profile" className='hover:text-gray-400'>
                 Profile
             </Link>
         </div>
