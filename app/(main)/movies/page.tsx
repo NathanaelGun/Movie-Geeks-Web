@@ -1,4 +1,5 @@
 "use client"; // 1. Convert to a Client Component
+export const dynamic = "force-dynamic"; 
 
 import React, { useState, useEffect } from 'react';
 import Hero from '@/Components/Hero';
