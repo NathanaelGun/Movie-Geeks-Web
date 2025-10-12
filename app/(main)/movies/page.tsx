@@ -45,7 +45,6 @@ const MoviesPage = () => {
     fetchMovies();
   }, [searchQuery, page]);
 
-  // 4. Function to fetch detailed movie info
   const handleMovieSelect = async (id: string) => {
     const url = `/api/movies?i=${id}`; // Use an API route
     const res = await fetch(url);

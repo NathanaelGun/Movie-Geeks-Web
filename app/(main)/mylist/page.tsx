@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from '@/Components/Hero';
 import MovieCard from '@/Components/MovieCard';
+import MovieDetail, { MovieDetails } from '@/Components/MovieDetail'; // Import the new component and type
 
 type Movie = {
   imdbID: string;
@@ -35,6 +36,15 @@ async function getMyListMovies() {
 
 const MyListPage = async () => {
   const myListMovies: Movie[] = await getMyListMovies();
+
+    const handleMovieSelect = async (id: string) => {
+    const url = `/api/movies?i=${id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if (data.movie) {
+      console.log("Selected movie:", data.movie);
+    }
+  };
 
   return (
     <div>
