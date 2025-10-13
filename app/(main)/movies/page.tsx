@@ -49,7 +49,7 @@ export default async function MoviesPage({
 }
 
 async function getMovies(search: string, page: number) {
-  const apiKey = process.env.OMDB_API_KEY;
+  const apiKey = process.env.NEXT_PUBLIC_OMDB_API_KEY;
   const searchTerm = search || "life";
   const url = `http://www.omdbapi.com/?s=${searchTerm}&page=${page}&apikey=${apiKey}`;
 
