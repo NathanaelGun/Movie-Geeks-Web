@@ -1,4 +1,3 @@
-import Navbar from '@/Components/Navbar'; // Adjust the import path if needed
 import React from 'react';
 
 type MainLayoutProps = {
