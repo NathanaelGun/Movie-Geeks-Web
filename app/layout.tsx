@@ -1,14 +1,10 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from 'next/font/google';
-import './globals.css';
 import Navbar from "@/Components/Navbar";
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: "MovGeek",
-  description: "Place for your movie review",
+  description: "Your premium cinematic research hub.",
 };
 
 export default function RootLayout({
@@ -17,11 +13,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Navbar /> {/* 2. Place Navbar here, outside of children */}
+    <html lang="en" className="dark" style={{ colorScheme: "dark" }} suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" />
+      </head>
+      <body className="min-h-screen flex flex-col bg-background text-on-background selection:bg-primary selection:text-on-primary antialiased" suppressHydrationWarning>
+        <Navbar />
         {children}
       </body>
     </html>
   );
 }
+

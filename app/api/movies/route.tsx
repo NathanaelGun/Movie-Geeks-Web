@@ -1,27 +1,19 @@
 import { NextResponse } from 'next/server';
+import { searchTMDBMovies, getTMDBMovieById } from './tmdbHelper';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const search = searchParams.get('s');
+  const search = searchParams.get('s') || '';
   const id = searchParams.get('i');
-  const page = searchParams.get('page');
-  const apiKey = process.env.OMDB_API_KEY;
-
-  let url = 'http://www.omdbapi.com/?';
+  const pageStr = searchParams.get('page') || '1';
+  const page = parseInt(pageStr, 10) || 1;
 
   if (id) {
-    url += `i=${id}&apikey=${apiKey}`;
-    const res = await fetch(url);
-    const movie = await res.json();
+    const movie = await getTMDBMovieById(id);
     return NextResponse.json({ movie });
   }
 
-  url += `s=${search}&page=${page}&type=movie&apikey=${apiKey}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  
-  return NextResponse.json({
-    movies: data.Search,
-    totalResults: parseInt(data.totalResults, 10),
-  });
+  const { movies, totalResults } = await searchTMDBMovies(search, page);
+  return NextResponse.json({ movies, totalResults });
 }
+

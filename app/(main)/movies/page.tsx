@@ -2,10 +2,9 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 import React from "react";
-import Hero from "@/Components/Hero";
 import MoviesClient from "./moviesClient";
+import { searchTMDBMovies } from "../../api/movies/tmdbHelper";
 
-// ✅ Ganti interface ini dengan tipe inline bawaan
 export default async function MoviesPage({
   searchParams,
 }: {
@@ -30,14 +29,10 @@ export default async function MoviesPage({
   const search = rawSearch || '';
   const page = Number(rawPage || '1');
 
-  const { movies, totalResults } = await getMovies(search, page);
+  const { movies, totalResults } = await searchTMDBMovies(search, page);
 
   return (
-    <div>
-      <Hero
-        title="Movie Collection"
-        subtitle="Browse through our vast collection or search for a specific title."
-      />
+    <div className="min-h-screen bg-background">
       <MoviesClient
         initialMovies={movies}
         totalResults={totalResults}
@@ -48,21 +43,4 @@ export default async function MoviesPage({
   );
 }
 
-async function getMovies(search: string, page: number) {
-  const apiKey = process.env.NEXT_PUBLIC_OMDB_API_KEY;
-  const searchTerm = search || "life";
-  const url = `http://www.omdbapi.com/?s=${searchTerm}&page=${page}&apikey=${apiKey}`;
 
-  try {
-    const res = await fetch(url, { cache: "no-store" });
-    const data = await res.json();
-    if (data.Search) {
-      return { movies: data.Search, totalResults: parseInt(data.totalResults) };
-    } else {
-      return { movies: [], totalResults: 0 };
-    }
-  } catch (err) {
-    console.error("Error fetching movies:", err);
-    return { movies: [], totalResults: 0 };
-  }
-}

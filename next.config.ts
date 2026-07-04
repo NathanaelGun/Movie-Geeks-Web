@@ -10,10 +10,15 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
-      // You can also add the placeholder domain here
       {
         protocol: 'https',
         hostname: 'placehold.co',
+      },
+      {
+        protocol: 'https',
+        hostname: 'image.tmdb.org',
+        port: '',
+        pathname: '/**',
       },
     ],
   },
