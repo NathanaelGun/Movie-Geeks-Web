@@ -128,6 +128,27 @@ All client-side detail requests are routed through the server-side proxy at `/ap
 
 ---
 
+## Deployment
+
+This project is deployed on Vercel. The `.env.local` file is excluded from version control, so environment variables must be configured manually on the platform.
+
+### Vercel
+
+1. Open the project on [vercel.com](https://vercel.com/dashboard)
+2. Go to **Settings** > **Environment Variables**
+3. Add the following variables and ensure both **Production** and **Preview** environments are selected:
+
+| Variable | Description |
+|---|---|
+| `TMDB_ACCESS_TOKEN` | Read access token (JWT Bearer) from TMDB API settings |
+| `TMDB_API_KEY` | API key (v3) from TMDB API settings |
+
+4. Go to the **Deployments** tab, click the three dots on the latest deployment, and select **Redeploy**
+
+Both variables can be obtained from [themoviedb.org/settings/api](https://www.themoviedb.org/settings/api) after creating an account.
+
+---
+
 ## Notes
 
 - The `.env.local` file is excluded from version control. Do not commit API credentials.
