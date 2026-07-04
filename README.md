@@ -2,6 +2,8 @@
 
 A cinematic movie discovery and tracking web application built with Next.js 15 and the TMDB API. Features a dark Cinematic Noir design system with glassmorphic UI components, real-time movie search, and a personal rating and watchlist system.
 
+Live: [movie-geeks-web.vercel.app](https://movie-geeks-web.vercel.app)
+
 ---
 
 ## Tech Stack
